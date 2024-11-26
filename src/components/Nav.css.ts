@@ -4,6 +4,8 @@ import { theme } from "../theme.css";
 export const nav = style({
   display: "flex",
   flexDirection: "row",
+
+  margin: theme.spacing.small,
 });
 
 export const home = style({

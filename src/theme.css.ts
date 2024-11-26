@@ -1,4 +1,4 @@
-import { createTheme, fontFace } from "@vanilla-extract/css";
+import { createTheme, fontFace, globalStyle } from "@vanilla-extract/css";
 
 const ibm = fontFace([
   {
@@ -77,6 +77,7 @@ export const [themeClass, theme] = createTheme({
   font: ibm,
   spacing: {
     small: "8px",
+    medium: "16px",
   },
   foreground: {
     default: "light-dark(black, white)",
@@ -86,4 +87,8 @@ export const [themeClass, theme] = createTheme({
     default: "light-dark(white, black)",
   },
   transition: "all .2s cubic-bezier(.19,1,.22,1)",
+});
+
+globalStyle("h1, h2, h3, h4, h5, h6", {
+  margin: 0,
 });

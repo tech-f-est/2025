@@ -16,7 +16,12 @@ import Nav from "../components/Nav.astro";
   <body class:list={[themeClass, style.page, style.landing]}>
     <Nav />
 
-    <h1>Tech F'Est</h1>
-    <h2>Vendredi 13 Juin 2025</h2>
+    <main class={style.main}>
+      <section class={style.details}>
+        <h1 class={style.title}>Tech F'Est</h1>
+        <h2 class={style.date}>Vendredi 13 Juin 2025</h2>
+        <h2 class={style.location}>IUT Charlemagne, Nancy</h2>
+      </section>
+    </main>
   </body>
 </html>
