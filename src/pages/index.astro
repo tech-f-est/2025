@@ -1,27 +1,13 @@
 ---
-import { themeClass } from "../theme.css";
 import * as style from "./index.css";
 
-import Nav from "../components/Nav.astro";
+import Layout from "../components/Layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Tech F'Est</title>
-  </head>
-  <body class:list={[themeClass, style.page, style.landing]}>
-    <Nav />
-
-    <main class={style.main}>
-      <section class={style.details}>
-        <h1 class={style.title}>Tech F'Est</h1>
-        <h2 class={style.date}>Vendredi 13 Juin 2025</h2>
-        <h2 class={style.location}>IUT Charlemagne, Nancy</h2>
-      </section>
-    </main>
-  </body>
-</html>
+<Layout>
+  <section class={style.details}>
+    <h1 class={style.title}>Tech F'Est</h1>
+    <h2 class={style.date}>Vendredi 13 Juin 2025</h2>
+    <h2 class={style.location}>IUT Charlemagne, Nancy</h2>
+  </section>
+</Layout>
