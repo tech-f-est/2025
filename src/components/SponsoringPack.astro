@@ -49,8 +49,8 @@ const { name, price, places, logo, messages, tables, talk } = Astro.props;
       {
         places > 0 ? (
           <>
-            <em>{places}</em> place{places > 1 ? "s" : ""} incluse
-            {places > 1 ? "s" : ""}
+            <em>{places}</em> place{places > 1 ? "s" : ""}{" "}
+            {`incluse${places > 1 ? "s" : ""}`}
           </>
         ) : (
           "Aucune place incluse"
