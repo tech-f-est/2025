@@ -6,19 +6,24 @@ export const page = style({
   gridTemplateColumns: "1fr 60vw 1fr",
   gridTemplateRows: "1fr 30vh 1fr",
 
+  alignItems: "center",
+
   flexGrow: 1,
 
   "@media": {
     "(max-width: 768px)": {
-      display: "flex",
-      flexDirection: "column",
+      gridTemplateColumns: `${theme.spacing.medium} auto ${theme.spacing.medium}`,
+      gridTemplateRows: `${theme.spacing.medium} auto ${theme.spacing.medium}`,
 
       alignItems: "center",
-      justifyContent: "center",
-
-      margin: theme.spacing.medium,
+      justifyItems: "center",
     },
   },
+});
+
+export const illustration = style({
+  gridColumn: "2",
+  gridRow: "2",
 });
 
 export const details = style({
@@ -31,9 +36,12 @@ export const details = style({
 
   fontSize: "2rem",
 
+  textAlign: "right",
+
   "@media": {
     "(max-width: 768px)": {
       fontSize: "1rem",
+      justifySelf: "end",
     },
   },
 });

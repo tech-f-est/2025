@@ -83,7 +83,7 @@ export const [themeClass, theme] = createTheme({
   foreground: {
     default: "light-dark(black, white)",
     accent: "light-dark(#E7680C, #E7680C)",
-    dimmed: "light-dark(white, #6E6E6E)",
+    dimmed: "light-dark(#7B7B7B, #6E6E6E)",
   },
   background: {
     default: "light-dark(white, black)",
@@ -91,7 +91,7 @@ export const [themeClass, theme] = createTheme({
   },
   transition: "all .2s cubic-bezier(.19,1,.22,1)",
 
-  border: "1px solid light-dark(black, #2A2A2A)",
+  border: "1px solid light-dark(#EEEEEE, #2A2A2A)",
 });
 
 globalStyle("h1, h2, h3, h4, h5, h6", {
