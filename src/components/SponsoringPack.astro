@@ -1,0 +1,90 @@
+---
+interface Props {
+  name: string;
+  price: number;
+  places: number;
+  logo: boolean;
+  messages: number;
+  tables: number;
+  talk: boolean;
+}
+
+import * as style from "./SponsoringPack.css";
+
+const body = (name: string) =>
+  [
+    "Bonjour,",
+    "",
+    `Je vous écris pour souscrire au pack de sponsoring "${name}". Pouvez-vous me fournir votre RIB que je puisse effecteur le virement ?`,
+  ].join("%0D%0A");
+
+const { name, price, places, logo, messages, tables, talk } = Astro.props;
+---
+
+<article class={style.pack}>
+  <h3 class={style.name}>{name}</h3>
+
+  <ul class={style.included}>
+    <li class={logo ? style.details.on : style.details.off}>
+      {
+        logo
+          ? "Votre logo sur les communications"
+          : "Pas de logo sur les communications"
+      }
+    </li>
+
+    <li class={messages > 0 ? style.details.on : style.details.off}>
+      {
+        messages > 0 ? (
+          <>
+            <em>{messages}</em> message{messages > 1 ? "s" : ""} de remerciement
+          </>
+        ) : (
+          "Aucune message de remerciement"
+        )
+      }
+    </li>
+
+    <li class={places > 0 ? style.details.on : style.details.off}>
+      {
+        places > 0 ? (
+          <>
+            <em>{places}</em> place{places > 1 ? "s" : ""} incluse
+            {places > 1 ? "s" : ""}
+          </>
+        ) : (
+          "Aucune place incluse"
+        )
+      }
+    </li>
+
+    <li class={tables > 0 ? style.details.on : style.details.off}>
+      {
+        tables > 0 ? (
+          <>
+            <em>{tables}</em> table{tables > 1 ? "s" : ""} dans le hall
+          </>
+        ) : (
+          "Aucune table"
+        )
+      }
+    </li>
+
+    <li class={talk ? style.details.on : style.details.off}>
+      {
+        talk
+          ? "Intro de 10 minutes en début de conférence"
+          : "Aucune présentation"
+      }
+    </li>
+  </ul>
+
+  <div class={style.price}>{price.toLocaleString("fr-FR")}€ HT</div>
+
+  <a
+    href={`mailto:sponso@tech-fest.dev?subject=${name}&body=${body(name)}`}
+    class={style.contact}
+  >
+    Contactez-nous
+  </a>
+</article>

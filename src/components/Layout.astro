@@ -1,8 +1,14 @@
 ---
+interface Props {
+  pageClass?: string;
+}
+
 import { themeClass } from "../theme.css";
 import * as style from "./Layout.css";
 
 import Nav from "../components/Nav.astro";
+
+const { pageClass } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,7 +22,7 @@ import Nav from "../components/Nav.astro";
   <body class:list={[themeClass, style.page]}>
     <Nav />
 
-    <main class={style.main}>
+    <main class:list={[style.main, pageClass]}>
       <slot />
     </main>
   </body>
