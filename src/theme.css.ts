@@ -77,7 +77,7 @@ export const [themeClass, theme] = createTheme({
   font: ibm,
   spacing: {
     small: "8px",
-    medium: "16px",
+    medium: "20px",
     large: "32px",
   },
   foreground: {

@@ -14,7 +14,6 @@ export const page = style({
 
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing.medium,
 });
 
 export const main = style({});

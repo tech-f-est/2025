@@ -9,6 +9,12 @@ export const nav = style({
   justifyContent: "space-between",
 
   margin: theme.spacing.small,
+
+  "@media": {
+    "(max-width: 768px)": {
+      alignItems: "flex-start",
+    },
+  },
 });
 
 export const home = style({
@@ -35,8 +41,18 @@ export const home = style({
 export const links = style({
   display: "flex",
   flexDirection: "row",
-  gap: theme.spacing.small,
+  gap: theme.spacing.medium,
   marginRight: theme.spacing.large,
+
+  "@media": {
+    "(max-width: 768px)": {
+      flexDirection: "column",
+      gap: theme.spacing.small,
+
+      alignItems: "flex-end",
+      textAlign: "right",
+    },
+  },
 });
 
 export const link = style({
