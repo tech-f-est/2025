@@ -6,11 +6,22 @@ import Stanislas from "../components/Stanislas.astro";
 ---
 
 <Layout pageClass={style.page}>
-  <Stanislas class={style.illustration} />
+  <section class={style.hero}>
+    <Stanislas class={style.illustration} />
+    <div class={style.details}>
+      <h1 class={style.title}>Tech F'Est</h1>
+      <h2 class={style.date}>Vendredi 13 Juin 2025</h2>
+      <h2 class={style.location}>IUT Charlemagne, Nancy</h2>
+      <h3>Une conférence tech sans les bouchons parisiens</h3>
+    </div>
+  </section>
 
-  <section class={style.details}>
-    <h1 class={style.title}>Tech F'Est</h1>
-    <h2 class={style.date}>Vendredi 13 Juin 2025</h2>
-    <h2 class={style.location}>IUT Charlemagne, Nancy</h2>
+  <section class={style.section}>
+    <div class={style.sectionContent}>
+      Lors d'une journée de conférence développeur dédiée au Grand Est, Tech
+      F'Est rassemble les passionnés du développement pour une journée
+      d'échanges et de partage. Venez découvrir des speakers de la région mais
+      aussi de plus loin, et tisser des liens avec la communauté tech locale.
+    </div>
   </section>
 </Layout>
