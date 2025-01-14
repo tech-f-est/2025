@@ -5,6 +5,7 @@ export const page = style({
   scrollSnapType: "both mandatory",
   overscrollBehaviorX: "contain",
   overflow: "auto",
+  overflowX: "hidden",
 });
 
 export const illustration = style({
