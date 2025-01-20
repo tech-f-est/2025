@@ -16,7 +16,7 @@ export const illustration = style({
 export const section = style({
   scrollSnapAlign: "center center",
   scrollSnapStop: "normal",
-  height: "calc(100vh - 88px)",
+  height: "calc(100vh - 76px)",
   width: "100vw",
 
   display: "grid",
@@ -32,6 +32,8 @@ export const section = style({
 
       alignItems: "center",
       justifyItems: "center",
+
+      height: "calc(100vh - 134px)",
     },
   },
 });
