@@ -8,7 +8,8 @@ export const nav = style({
   alignItems: "center",
   justifyContent: "space-between",
 
-  margin: theme.spacing.small,
+  padding: theme.spacing.small,
+  boxSizing: "border-box",
 
   "@media": {
     "(max-width: 768px)": {
@@ -51,6 +52,8 @@ export const links = style({
 
       alignItems: "flex-end",
       textAlign: "right",
+
+      marginRight: theme.spacing.small,
     },
   },
 });
