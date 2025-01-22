@@ -9,4 +9,10 @@ export const page = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+
+  "@media": {
+    "(max-width: 768px)": {
+      height: "auto",
+    },
+  },
 });
