@@ -79,7 +79,7 @@ const { name, price, places, logo, messages, tables, talk } = Astro.props;
     </li>
   </ul>
 
-  <div class={style.price}>{price.toLocaleString("fr-FR")}€ HT</div>
+  <div class={style.price}>{price.toLocaleString("fr-FR")}€</div>
 
   <a
     href={`mailto:sponso@tech-fest.dev?subject=${name}&body=${body(name)}`}
