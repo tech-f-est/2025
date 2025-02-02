@@ -47,13 +47,34 @@ export const links = style({
 
   "@media": {
     "(max-width: 768px)": {
+      position: "absolute",
+      overflow: "hidden",
+      width: "100vw",
+      height: "100vh",
+
+      transition: "background .2s, content-visibility .2s allow-discrete",
+      background: "transparent",
+      contentVisibility: "hidden",
+      pointerEvents: "none",
+
+      selectors: {
+        "label:has(input:checked) ~ &": {
+          contentVisibility: "visible",
+          pointerEvents: "initial",
+
+          background: "black",
+        },
+      },
+
       flexDirection: "column",
       gap: theme.spacing.small,
 
+      justifyContent: "center",
       alignItems: "flex-end",
       textAlign: "right",
 
-      marginRight: theme.spacing.small,
+      boxSizing: "border-box",
+      padding: theme.spacing.large,
     },
   },
 });
@@ -76,5 +97,32 @@ export const link = style({
 
   ":hover": {
     borderColor: theme.foreground.accent,
+  },
+
+  "@media": {
+    "(max-width: 768px)": {
+      transform: `translateX(300px)`,
+
+      transition: theme.transition,
+
+      selectors: {
+        "label:has(input:checked) ~ * &": {
+          transform: `translateX(0px)`,
+        },
+      },
+    },
+  },
+});
+
+export const burger = style({
+  display: "none",
+  "@media": {
+    "(max-width: 768px)": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      // Hand crafted padding so the button takes is as large as possible without pushing the nav's height
+      padding: 18,
+    },
   },
 });
