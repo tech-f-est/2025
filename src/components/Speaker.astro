@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  name: string;
+  abstract: string;
+}
+
+import * as style from "./Speaker.css";
+
+
+const { title, name, abstract} = Astro.props;
+---
+
+<article class={style.pack}>
+  <h3 class={style.name}>{title}</h3>
+
+  <h4 class={style.included}>
+    {name}
+  </h4>
+
+  <p class={style.included}>
+    {abstract}
+  </p>
+
+</article>
