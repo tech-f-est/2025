@@ -27,3 +27,15 @@ export const packs = style({
     "(max-width: 768px)": { gridTemplateColumns: "1fr" },
   },
 });
+
+export const sponsors = style({
+  display: "grid",
+  gap: theme.spacing.large,
+  gridTemplateColumns: "repeat(5, 1fr)",
+
+  gridColumn: "2",
+
+  "@media": {
+    "(max-width: 768px)": { gridTemplateColumns: "1fr" },
+  },
+});

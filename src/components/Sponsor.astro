@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+  logo: string;
+  url: string;
+}
+
+import * as style from "./Sponsor.css";
+
+const { name, logo, url } = Astro.props;
+---
+
+<article class={style.sponsor}>
+  <a href={url} class={style.lien}>
+    <img src={logo} alt={name} width="180"/>
+  </a>
+</article>
