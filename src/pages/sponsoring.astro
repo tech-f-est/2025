@@ -2,10 +2,25 @@
 import * as style from "./sponsoring.css";
 
 import Layout from "../components/Layout.astro";
+import Sponsor from "../components/Sponsor.astro";
 import SponsoringPack from "../components/SponsoringPack.astro";
 ---
 
 <Layout pageClass={style.page}>
+  <h2>Ils nous soutiennent</h2>
+  <section class={style.sponsors}>
+    <Sponsor
+      name="Darkmira",
+      logo="/img/darkmira.png",
+      url="https://darkmira.fr"
+    />
+    <Sponsor
+      name="Tdutrion",
+      logo="/img/tdutrion.jpg",
+      url="https://tdutrion.dev/"
+    />
+  </section>
+  <h2>Devenez sponsor</h2>
   <section class={style.packs}>
     <SponsoringPack
       name="Jaumont"
