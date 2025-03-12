@@ -1,32 +1,8 @@
-import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { card } from "../utils.css";
 import { theme } from "../theme.css";
 
-export const contact = style({
-  display: "block",
-
-  cursor: "pointer",
-  textDecoration: "none",
-
-  color: theme.foreground.accent,
-  fontWeight: 500,
-  textAlign: "center",
-
-  padding: theme.spacing.small,
-  border: theme.border,
-  borderColor: theme.foreground.accent,
-  background: theme.background.element,
-  borderRadius: 8,
-
-  transition: theme.transition,
-
-  ":hover": {
-    background: theme.foreground.accent,
-    color: theme.foreground.default,
-  },
-});
-
-export const pack = style([
+export const speaker = style([
   card(),
   {
     transition: theme.transition,
@@ -39,7 +15,7 @@ export const pack = style([
     gap: theme.spacing.large,
 
     selectors: {
-      [`&:has(${contact}:hover)`]: {
+      [`&:hover`]: {
         borderColor: theme.foreground.accent,
         boxShadow: `0px 0px 12px ${theme.foreground.accent}`,
       },
@@ -62,16 +38,26 @@ export const name = style({
   fontSize: "1.5em",
 });
 
-export const details = styleVariants({
-  on: {},
-  off: { color: theme.foreground.dimmed },
-});
-globalStyle(`${details.on} em`, {
-  fontStyle: "normal",
-  fontWeight: 700,
-});
-
-export const price = style({
-  fontWeight: 500,
-  fontSize: "2em",
+export const emptyState = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "1.5em",
+  color: theme.foreground.default,
+  height: "100%",
+  width: "100%",
+  padding: theme.spacing.medium,
+  position: "relative",
+  "::before": {
+    content: "'?'",
+    position: "absolute",
+    fontSize: "3em",
+    color: theme.foreground.dimmed,
+    opacity: 0.7,
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 0,
+  },
+  zIndex: 1,
 });
