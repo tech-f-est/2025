@@ -19,6 +19,7 @@ export const page = style({
 export const speakers = style({
   display: "grid",
   gap: theme.spacing.large,
+  gridTemplateColumns: "repeat(2, 1fr)",
 
   "@media": {
     "(max-width: 768px)": { gridTemplateColumns: "1fr" },
