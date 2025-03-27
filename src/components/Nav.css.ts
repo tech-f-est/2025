@@ -62,7 +62,7 @@ export const links = style({
           contentVisibility: "visible",
           pointerEvents: "initial",
 
-          background: "black",
+          background: theme.background.default,
         },
       },
 
