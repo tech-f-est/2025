@@ -1,0 +1,37 @@
+---
+interface Props {
+  name: string;
+  price: number;
+  places: number;
+}
+
+import * as style from "./TicketsPack.css";
+
+const { name, price, places, logo, messages, tables, talk } = Astro.props;
+---
+
+<article class={style.pack}>
+  <h3 class={style.name}>{name}</h3>
+
+    <li class={places > 0 ? style.details.on : style.details.off}>
+      {
+        places > 0 ? (
+          <>
+            <em>{places}</em> place{places > 1 ? "s" : ""}{" "}
+            {`restante${places > 1 ? "s" : ""}`}
+          </>
+        ) : (
+          "Epuisé"
+        )
+      }
+    </li>
+
+  </ul>
+
+  <div class={style.price}>{price.toLocaleString("fr-FR")}€</div>
+
+  <a
+    href=https://www.helloasso.com/associations/tech-f-est/evenements/tech-f-est-2025>
+    Acheter
+  </a>
+</article>
