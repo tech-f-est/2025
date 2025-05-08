@@ -94,6 +94,13 @@ export const [themeClass, theme] = createTheme({
   border: "1px solid light-dark(#EEEEEE, #2A2A2A)",
 });
 
+// Ajout des breakpoints standardisés qui peuvent être utilisés dans toute l'application
+export const breakpoints = {
+  mobile: '600px',
+  tablet: '900px',
+  desktop: '1200px'
+};
+
 globalStyle("h1, h2, h3, h4, h5, h6", {
   margin: 0,
 });
