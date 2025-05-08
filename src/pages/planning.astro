@@ -1,0 +1,24 @@
+---
+import Layout from "../components/Layout.astro";
+import PlanningComponent from "../components/Planning.astro";
+import * as style from "./planning.css.ts";
+import { getAllEvents } from "../data/conference-data";
+
+const allEvents = getAllEvents();
+---
+
+<Layout pageClass={style.planningPage}>
+  <div class={style.planningContainer}>
+    <header class={style.pageHeader}>
+      <h1 class={style.pageTitle}>Programme</h1>
+      <p class={style.pageSubtitle}>13 Juin 2025 • IUT Charlemagne - Nancy</p>
+    </header>
+    
+    <PlanningComponent events={allEvents} />
+    
+    <div class={style.planningFooter}>
+      <p>Les conférences durent 40 minutes, avec temps d'échange inclus</p>
+      <a href="/speakers" class={style.speakersLink}>Découvrir tous les intervenants</a>
+    </div>
+  </div>
+</Layout>
