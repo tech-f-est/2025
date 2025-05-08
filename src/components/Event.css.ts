@@ -4,7 +4,7 @@ import { theme } from '../theme.css';
 export const timelineRow = style({
   display: 'grid',
   gridTemplateColumns: '130px 1fr',
-  borderBottom: `1px solid var(--border-color, light-dark(#e5e7eb, #2a2a2a))`,
+  borderBottom: '1px solid var(--border-color, light-dark(#e5e7eb, #3a3a3a))',
   ':last-child': {
     borderBottom: 'none',
   },
@@ -22,7 +22,7 @@ export const timeColumn = style({
   justifyContent: 'flex-start',
   alignItems: 'center',
   padding: '1.5rem',
-  borderRight: `1px solid var(--border-color, light-dark(#e5e7eb, #2a2a2a))`,
+  borderRight: '1px solid var(--border-color, light-dark(#e5e7eb, #3a3a3a))',
   backgroundColor: 'var(--grayLight, light-dark(#f3f4f6, #2a2a2a))',
   fontSize: '0.95rem',
   fontWeight: '600',
@@ -35,7 +35,7 @@ export const timeColumn = style({
       paddingBottom: '0.5rem',
       backgroundColor: 'transparent',
       borderRight: 'none',
-      borderBottom: `1px solid var(--border-color, light-dark(#e5e7eb, #2a2a2a))`,
+      borderBottom: '1px solid var(--border-color, light-dark(#e5e7eb, #3a3a3a))',
       marginLeft: '1rem',
       marginRight: '1rem',
     }
@@ -146,6 +146,33 @@ export const speakerName = style({
   color: theme.foreground.default,
 });
 
+export const speakerLink = style({
+  color: 'inherit',
+  textDecoration: 'none',
+  display: 'inline-flex',
+  alignItems: 'center',
+  borderBottom: `1px dashed ${theme.foreground.accent}`,
+  gap: '0.4rem',
+  
+  ':hover': {
+    color: theme.foreground.accent,
+  }
+});
+
+export const speakerLinkIcon = style({
+  opacity: 0.6,
+  width: '0.85em',
+  height: '0.85em',
+  transition: 'opacity 0.15s ease, transform 0.15s ease',
+  
+  selectors: {
+    [`${speakerLink}:hover &`]: {
+      opacity: 1,
+      transform: 'rotate(-10deg)',
+    }
+  }
+});
+
 export const shortDescription = style({
   fontSize: '0.95rem',
   fontWeight: '400',
@@ -202,7 +229,7 @@ export const toggleButton = style({
   cursor: 'pointer',
   transition: 'all 0.2s ease',
   ':hover': {
-    backgroundColor: 'light-dark(rgba(231, 104, 12, 0.1), rgba(231, 104, 12, 0.2))',
+    backgroundColor: 'rgba(var(--color-accent-rgb, 231, 104, 12), 0.1)',
     color: theme.foreground.accent,
   }
 });

@@ -10,6 +10,7 @@ export interface Speaker {
     github?: string;
     linkedin?: string;
     website?: string;
+    bluesky?: string;  // Ajout de Bluesky
   };
 }
 
@@ -34,85 +35,84 @@ export const speakers: Speaker[] = [
   {
     id: "arnaud-lahaxe",
     name: "Arnaud Lahaxe",
-    bio: "Expert en migration de systèmes legacy",
-    company: "Tech Company",
-    title: "Lead Developer",
+    bio: "Fort de près de 15 ans d'expérience en tant que développeur PHP, mais pas que, il s'est toujours distingué par son amour du code bien conçu, privilégiant des solutions simples, robustes et faciles à maintenir. ",
+    company: "BoursoBank",
+    title: "Architecte applicatif",
+    avatarUrl: "/img/speakers/arnaud-lahaxe.jpg",
     socialLinks: {
-      twitter: "arnaudlahaxe",
-      linkedin: "arnaud-lahaxe",
+      twitter: "arnaud_lahaxe",
+      linkedin: "/arnaud-⚡%EF%B8%8F-lahaxe-15837333/",
     }
   },
   {
     id: "kevin-maschtaler",
     name: "Kevin Maschtaler",
-    bio: "Staff Software Engineer à Shotgun",
+    bio: "Développeur depuis 10 ans, il s'est spécialisé dans l'architecture et la fiabilité de plateformes traitant de grands volumes. Chez Shotgun, il garanti la robustesse et la conformité de leur plateforme de paiement.",
     company: "Shotgun",
     title: "Staff Software Engineer",
     socialLinks: {
-      twitter: "kevinmaschtaler",
-      github: "kmaschtaler",
+      twitter: "Kmaschta",
+      github: "Kmaschta",
+      linkedin: "kmaschta"
     }
   },
   {
     id: "christophe-gigax",
     name: "Christophe Gigax",
-    bio: "Expert en architecture micro-services",
-    company: "Tech Solutions",
-    title: "Cloud Architect",
+    bio: "Expert passionné des technologies Microsoft, spécialisé dans le développement Cloud, Web et Mobile. Certifié Azure Architect, DevOps Expert et Developer, il a été reconnu Microsoft MVP en Visual Studio et Technologies de Développement depuis 2017.",
+    company: "Hager",
+    title: "Cloud Solution Architect",
     socialLinks: {
-      linkedin: "christophe-gigax",
+      linkedin: "christophegigax",
     }
   },
   {
     id: "steven-martins",
     name: "Steven Martins",
-    bio: "Spécialiste en infrastructures cloud",
-    company: "Cloud Services",
-    title: "DevOps Lead",
+    bio: "Spécialiste des technologies cloud-native et de l'orchestration conteneuriséem, ancien RSSI ayant assuré la certification ISO 27001, il partagera son expertise en modernisation d'infrastructures et pratiques DevOps pour optimiser vos plateformes.",
+    company: "+Simple",
+    title: "Architecte Technique",
     socialLinks: {
-      github: "stevenmartins",
+      linkedin: "smartins0",
     }
   },
   {
     id: "anne-flore-francois",
     name: "Anne-Flore François",
-    bio: "Experte en sécurité CI/CD",
-    company: "SecOps Inc",
-    title: "Security Engineer",
+    bio: "Elle consacre une partie de son temps à détecter les risques de sécurité des infrastructures cloud de clients à l’aide d’audits et pentests. Et le reste du temps, elle démystifie pour ses clients les bonnes pratiques de sécurité cloud et implémente des correctifs de vulnérabilités et des outils de défense nécessaires à une infra robuste et sécurisée.",
+    company: "Theodo Cloud",
+    title: "Lead SecOps",
     socialLinks: {
-      twitter: "affrancois",
-      github: "affrancois",
+      linkedin: "anne-flore-francois",
     }
   },
   {
     id: "marcy-ericka-charollois",
     name: "Marcy Ericka Charollois",
-    bio: "Chercheuse en éthique numérique",
-    company: "Digital Ethics Lab",
-    title: "Research Lead",
+    bio: "Auteure en social tech, content strategist. Ancienne rédactrice en cheffe de WeLoveDevs. Elle y était la première femme embauchée. Elle était la première femme racisée et LGBTQIA+.  Elle choisi de prendre une plume plus engagée pour valoriser la diversité dans notre industrie.",
+    company: "",
+    title: "Inclusive UX Consultant",
     socialLinks: {
-      linkedin: "marcy-charollois",
-      website: "marcycharollois.com",
+      linkedin: "/marcy-ericka-charollois-1604",
     }
   },
   {
     id: "iana-iatsun",
     name: "Iana Iatsun",
-    bio: "Spécialiste en IA et moteurs de recherche",
-    company: "AI Solutions",
-    title: "AI Engineer",
+    bio: "Docteure en traitement d'images et signal et pionnière des réseaux de neurones. Après une carrière en biométrie, elle dirige depuis 5 ans les activités MLOps de la Banque de France tout en promouvant une IA éthique et responsable. Sa double expertise technique et éthique en fait une voix incontournable dans le domaine de l'intelligence artificielle.",
+    company: "Banque de France",
+    title: " Artificial Intelligence Specialist",
     socialLinks: {
-      twitter: "ianaiatsun",
+      linkedin: "iaiatsun",
     }
   },
   {
     id: "emmanuelle-aboaf",
     name: "Emmanuelle Aboaf",
-    bio: "Développeuse web et experte en accessibilité",
-    company: "Web Accessibility Co",
-    title: "Frontend Developer",
+    bio: "Sourde de naissance, bionique (deux implants cochléaires) et surtout développeuse Fullstack Angular .NET chez Shodo, elle lutte chaque jour pour l’accessibilité. Dans son monde idéal, tout doit être accessible aussi bien dans la vraie vie que sur le Web.",
+    company: "SHODO",
+    title: "développeuse fullstack",
     socialLinks: {
-      github: "emmanuelleaboaf",
       linkedin: "emmanuelle-aboaf",
     }
   },
@@ -346,4 +346,14 @@ export function getAllEvents(eventTypes?: EventType[]): Talk[] {
 // Fonction pour récupérer uniquement les talks (pour la page speakers)
 export function getAllTalks(): Talk[] {
   return talks.filter(talk => talk.type === 'talk');
+}
+
+// Fonction pour récupérer l'URL d'un talk avec son ancre
+export function getTalkUrl(talkId: string): string {
+  return `/planning#talk-${talkId}`;
+}
+
+// Fonction pour obtenir l'URL du speaker
+export function getSpeakerUrl(speakerId: string): string {
+  return `/speakers#speaker-${speakerId}`;
 }

@@ -1,6 +1,6 @@
 ---
 import * as style from "./Event.css.ts";
-import { getSpeakerById } from "../data/conference-data";
+import { getSpeakerById, getSpeakerUrl } from "../data/conference-data";
 import type { Talk } from "../data/conference-data";
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 const { event, index } = Astro.props;
 const speaker = event.speakerId ? getSpeakerById(event.speakerId) : null;
 const isSpecialEvent = event.type !== 'talk';
+const speakerUrl = speaker ? getSpeakerUrl(speaker.id) : '';
 
 // Détermination des classes CSS pour la ligne et la colonne
 const rowClass = `${style.timelineRow} ${
@@ -35,7 +36,7 @@ const columnClass = `${style.contentColumn} ${
 const abstractId = `abstract-${event.id}`;
 ---
 
-<div class={rowClass}>
+<div class={rowClass} id={`talk-${event.id}`}>
   <div class={style.timeColumn}>
     <span class={style.timeSlot}>{event.startTime}</span>
     <span class={style.mobileTimeSeparator}>-</span>
@@ -44,7 +45,21 @@ const abstractId = `abstract-${event.id}`;
   <div class={columnClass}>
     <div class={style.talkContent}>
       <h3 class={style.talkTitle}>{event.title}</h3>
-      {speaker && <p class={style.speakerName}>{speaker.name}</p>}
+      {speaker && (
+        <p class={style.speakerName}>
+          {speakerUrl ? (
+            <a href={speakerUrl} class={style.speakerLink} title="Voir le profil de l'intervenant">
+              {speaker.name}
+              <svg class={style.speakerLinkIcon} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </a>
+          ) : (
+            speaker.name
+          )}
+        </p>
+      )}
       {event.shortDescription && 
         <p class={style.shortDescription}>{event.shortDescription}</p>
       }

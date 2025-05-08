@@ -17,17 +17,23 @@ const speakersWithTalks = speakers.map(speaker => {
 });
 
 // On filtre pour n'avoir que les speakers qui ont un talk
-const speakersToDisplay = speakersWithTalks.filter(speaker => speaker.talk);
+const speakersToDisplay = speakersWithTalks
+  .filter(speaker => speaker.talk)
+  // Ajout du tri par ordre alphabétique sur le nom
+  .sort((a, b) => a.name.localeCompare(b.name, 'fr-FR'));
 ---
 
-<Layout pageClass={style.page}>
-  <section class={style.speakers}>
-    {speakersToDisplay.map(speaker => (
-      <Speaker
-        title={speaker.talk?.title || ""}
-        name={speaker.name}
-        abstract={speaker.talk?.abstract || ""}
-      />
-    ))}
-  </section>
+<Layout title="Nos intervenants - Tech-f-est 2025" pageClass={style.page}>
+  <div class={style.container}>
+    <h1 class={style.pageTitle}>Nos intervenants</h1>
+    <p class={style.pageDescription}>
+      Découvrez les experts qui partageront leurs connaissances et expériences lors du Tech-f-est 2025
+    </p>
+    
+    <section class={style.speakers}>
+      {speakersToDisplay.map(speaker => (
+        <Speaker speaker={speaker} talk={speaker.talk} />
+      ))}
+    </section>
+  </div>
 </Layout>
