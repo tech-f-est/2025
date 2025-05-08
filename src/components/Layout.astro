@@ -1,6 +1,7 @@
 ---
 interface Props {
   pageClass?: string;
+  title?: string;
 }
 
 import { themeClass } from "../theme.css";
@@ -8,7 +9,7 @@ import * as style from "./Layout.css";
 
 import Nav from "../components/Nav.astro";
 
-const { pageClass } = Astro.props;
+const { pageClass = "", title = "Tech-f-est" } = Astro.props;
 ---
 
 <html lang="en">
@@ -17,7 +18,7 @@ const { pageClass } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Tech F'Est</title>
+    <title>{title}</title>
   </head>
   <body class:list={[themeClass, style.page]}>
     <Nav />
