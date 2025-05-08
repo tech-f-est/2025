@@ -1,0 +1,77 @@
+---
+import * as style from "./SponsorSection.css.ts";
+import type { Sponsor, SponsorPack } from "../data/sponsoring-data";
+import { getSponsorLogoPath } from "../data/sponsoring-data";
+
+interface Props {
+  pack: SponsorPack;
+  sponsors: Sponsor[];
+}
+
+const { pack, sponsors } = Astro.props;
+
+// Déterminer le style du titre en fonction du type de pack
+const packTitleStyle = {
+  jaumont: style.jaymontPackHeading,
+  bergamote: style.bergamotePackHeading,
+  stanislas: style.stanislasPackHeading
+}[pack.id] || style.standardPackHeading;
+
+// Descriptions des packs pour le contexte
+const packDescriptions = {
+  jaumont: "Nos sponsors Jaumont soutiennent l'événement et participent à sa réussite.",
+  bergamote: "Les sponsors Bergamote sont des partenaires essentiels qui contribuent activement à l'événement.",
+  stanislas: "Nos sponsors Stanislas sont des partenaires premium qui jouent un rôle majeur dans l'organisation de l'événement."
+};
+
+// Déterminer la classe de carte en fonction du pack
+const getCardClass = (packId: string) => {
+  switch (packId) {
+    case "stanislas": return style.cardLarge;
+    case "bergamote": return style.cardMedium;
+    case "jaumont": return style.cardSmall;
+    default: return style.cardSmall;
+  }
+};
+
+const getLogoClass = (packId: string) => {
+  switch (packId) {
+    case "stanislas": return style.logoLarge;
+    case "bergamote": return style.logoMedium;
+    case "jaumont": return style.logoSmall;
+    default: return style.logoSmall;
+  }
+};
+
+const cardClass = getCardClass(pack.id);
+const logoClass = getLogoClass(pack.id);
+---
+
+<section class={style.sponsorSection}>
+  <h2 class={`${style.sectionTitle} ${packTitleStyle}`}>Sponsors {pack.name}</h2>
+  
+  {packDescriptions[pack.id as keyof typeof packDescriptions] && (
+    <p class={style.sectionDescription}>
+      {packDescriptions[pack.id as keyof typeof packDescriptions]}
+    </p>
+  )}
+  
+  <div class={style.sponsorsGrid}>
+    {sponsors.map((sponsor) => (
+      <div class={cardClass}>
+        <div class={style.logoContainer}>
+          <img
+            src={getSponsorLogoPath(sponsor)}
+            alt={`Logo de ${sponsor.name}`}
+            class={logoClass}
+          />
+        </div>
+        <h3 class={style.sponsorName}>{sponsor.name}</h3>
+        {sponsor.description && <p class={style.description}>{sponsor.description}</p>}
+        <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class={style.link}>
+          En savoir plus
+        </a>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,90 +1,64 @@
 ---
-interface Props {
-  name: string;
-  price: number;
-  places: number;
-  logo: boolean;
-  messages: number;
-  tables: number;
-  talk: boolean;
-}
+import * as style from "./SponsoringPack.css.ts";
+import type { SponsorPack } from "../data/sponsoring-data";
 
-import * as style from "./SponsoringPack.css";
+interface Props extends SponsorPack {}
 
+const subject = (name: string) => `Sponsoring Tech-f-est 2025 - Pack "${name}"`;
 const body = (name: string) =>
   [
     "Bonjour,",
     "",
     `Je vous écris pour souscrire au pack de sponsoring "${name}". Pouvez-vous me fournir votre RIB que je puisse effecteur le virement ?`,
   ].join("%0D%0A");
+const { id, name, price, places, messages, tables, logo, talk } = Astro.props;
 
-const { name, price, places, logo, messages, tables, talk } = Astro.props;
+// Formater le prix avec espace comme séparateur de milliers et € comme devise
+function formatPrice(price: number): string {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+}
+
+// Déterminer les classes en fonction du type de pack
+const packClass = style.pack + " " + (style.packVariants[id as keyof typeof style.packVariants] || "");
+
+// Déterminer si un badge devrait être affiché
+const showRecommendedBadge = id === "bergamote";
+const showPremiumBadge = id === "stanislas";
 ---
 
-<article class={style.pack}>
-  <h3 class={style.name}>{name}</h3>
+<div class={packClass}>
+  {showRecommendedBadge && <span class={style.recommendedBadge}>Recommandé</span>}
+  {showPremiumBadge && <span class={style.premiumBadge}>Premium</span>}
 
-  <ul class={style.included}>
-    <li class={logo ? style.details.on : style.details.off}>
-      {
-        logo
-          ? "Votre logo sur les communications"
-          : "Pas de logo sur les communications"
-      }
+  <h2 class={style.packTitle}>{name}</h2>
+  <div class={style.price}>{formatPrice(price)}</div>
+  
+  <ul class={style.features}>
+    <li class={style.feature}>
+      <span class={style.featureLabel}>Places offertes</span>
+      <span class={style.featureValue}>{places}</span>
     </li>
-
-    <li class={messages > 0 ? style.details.on : style.details.off}>
-      {
-        messages > 0 ? (
-          <>
-            <em>{messages}</em> message{messages > 1 ? "s" : ""} de remerciement
-          </>
-        ) : (
-          "Aucune message de remerciement"
-        )
-      }
+    <li class={style.feature}>
+      <span class={style.featureLabel}>Messages sur nos réseaux</span>
+      <span class={style.featureValue}>{messages}</span>
     </li>
-
-    <li class={places > 0 ? style.details.on : style.details.off}>
-      {
-        places > 0 ? (
-          <>
-            <em>{places}</em> place{places > 1 ? "s" : ""}{" "}
-            {`incluse${places > 1 ? "s" : ""}`}
-          </>
-        ) : (
-          "Aucune place incluse"
-        )
-      }
+    <li class={style.feature}>
+      <span class={style.featureLabel}>Tables</span>
+      <span class={style.featureValue}>{tables}</span>
     </li>
-
-    <li class={tables > 0 ? style.details.on : style.details.off}>
-      {
-        tables > 0 ? (
-          <>
-            <em>{tables}</em> table{tables > 1 ? "s" : ""} dans le hall
-          </>
-        ) : (
-          "Aucune table"
-        )
-      }
+    <li class={style.feature}>
+      <span class={style.featureLabel}>Logo sur le site</span>
+      <span class={style.featureValue}>{logo ? "Inclus" : "Non inclus"}</span>
     </li>
-
-    <li class={talk ? style.details.on : style.details.off}>
-      {
-        talk
-          ? "Intro de 10 minutes en début de conférence"
-          : "Aucune présentation"
-      }
+    <li class={style.feature}>
+      <span class={style.featureLabel}>Intro Sponsor</span>
+      <span class={style.featureValue}>{talk ? "Inclus" : "Non inclus"}</span>
     </li>
   </ul>
-
-  <div class={style.price}>{price.toLocaleString("fr-FR")}€</div>
-
+  
   <a
-    href={`mailto:sponso@tech-fest.dev?subject=${name}&body=${body(name)}`}
+    href={`mailto:sponso@tech-fest.dev?subject=${subject(name)}&body=${body(name)}`}
     class={style.contact}
-  >
-    Contactez-nous
+  >    Devenir sponsor {name}
   </a>
-</article>
+</div>

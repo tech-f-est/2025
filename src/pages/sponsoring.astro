@@ -1,38 +1,47 @@
 ---
 import * as style from "./sponsoring.css";
-
 import Layout from "../components/Layout.astro";
 import SponsoringPack from "../components/SponsoringPack.astro";
+import SponsorSection from "../components/SponsorSection.astro";
+import { sponsorPacks, getSponsorsByPackId, getStandardPacks } from "../data/sponsoring-data";
+
+const standardSponsorPacks = getStandardPacks();
+// Trier les packs par prix (du plus cher au moins cher) pour l'affichage des sponsors
+const sortedPacksByPriceDesc = [...sponsorPacks].sort((a, b) => b.price - a.price);
+// Trier les packs par prix (du moins cher au plus cher) pour l'affichage des offres
+const sortedStandardPacksByPriceAsc = [...standardSponsorPacks].sort((a, b) => a.price - b.price);
 ---
 
-<Layout pageClass={style.page}>
-  <section class={style.packs}>
-    <SponsoringPack
-      name="Jaumont"
-      price={600}
-      places={0}
-      messages={3}
-      tables={0}
-      logo={true}
-      talk={false}
-    />
-    <SponsoringPack
-      name="Bergamote"
-      price={1800}
-      places={3}
-      messages={4}
-      tables={1}
-      logo={true}
-      talk={false}
-    />
-    <SponsoringPack
-      name="Stanislas"
-      price={4500}
-      places={5}
-      messages={6}
-      tables={2}
-      logo={true}
-      talk={true}
-    />
-  </section>
+<Layout pageClass={style.page} title="Sponsoring - Tech-f-est 2025">
+  <div class={style.container}>
+    <h1 class={style.pageTitle}>Nos sponsors</h1>
+    
+    <!-- Section pour chaque type de sponsor, en ordre décroissant d'importance -->
+    {sortedPacksByPriceDesc.map(pack => {
+      const packSponsors = getSponsorsByPackId(pack.id);
+      if (packSponsors.length > 0) {
+        return <SponsorSection pack={pack} sponsors={packSponsors} />;
+      }
+      return null;
+    })}
+    
+    <h1 class={style.pageTitle}>Nos offres de sponsoring</h1>
+    
+    <!-- Packs de sponsoring -->
+    <section class={style.packsSection}>
+      <div class={style.packs}>
+        {sortedStandardPacksByPriceAsc.map(pack => (
+          <SponsoringPack {...pack} />
+        ))}
+      </div>
+    </section>
+    
+    <!-- Section contact -->
+    <section class={style.contactSection}>
+      <h2 class={style.contactTitle}>Intéressé pour devenir sponsor ?</h2>
+      <p class={style.contactText}>
+        Contactez-nous à <a href="mailto:sponsors@tech-f-est.fr" class={style.contactLink}>sponsors@tech-f-est.fr</a> pour plus d'informations.
+      </p>
+    </section>
+  </div>
 </Layout>
