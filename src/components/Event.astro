@@ -1,0 +1,98 @@
+---
+import * as style from "./Event.css.ts";
+import { getSpeakerById, getSpeakerUrl } from "../data/conference-data";
+import type { Talk } from "../data/conference-data";
+
+interface Props {
+  event: Talk;
+  index: number;
+}
+
+const { event, index } = Astro.props;
+const speaker = event.speakerId ? getSpeakerById(event.speakerId) : null;
+const isSpecialEvent = event.type !== 'talk';
+const speakerUrl = speaker ? getSpeakerUrl(speaker.id) : '';
+
+// Détermination des classes CSS pour la ligne et la colonne
+const rowClass = `${style.timelineRow} ${
+  isSpecialEvent ? style.specialRow : (index % 2 === 0 ? style.alternateRow : "")
+} ${
+  event.type === 'break' ? style.coffeeBreakRow : 
+  event.type === 'lunch' ? style.lunchRow : 
+  event.type === 'keynote' ? style.keynoteRow : 
+  event.type === 'opening' ? style.specialRow :
+  event.type === 'closing' ? style.closingRow : ""
+}`;
+
+const columnClass = `${style.contentColumn} ${
+  event.type === 'break' ? style.coffeeBreak : 
+  event.type === 'lunch' ? style.lunch : 
+  event.type === 'keynote' ? style.keynote :
+  event.type === 'opening' ? style.opening :
+  event.type === 'closing' ? style.closing : ""
+}`;
+
+// ID unique pour l'abstract
+const abstractId = `abstract-${event.id}`;
+---
+
+<div class={rowClass} id={`talk-${event.id}`}>
+  <div class={style.timeColumn}>
+    <span class={style.timeSlot}>{event.startTime}</span>
+    <span class={style.mobileTimeSeparator}>-</span>
+    <span class={style.timeSlot}>{event.endTime}</span>
+  </div>
+  <div class={columnClass}>
+    <div class={style.talkContent}>
+      <h3 class={style.talkTitle}>{event.title}</h3>
+      {speaker && (
+        <p class={style.speakerName}>
+          {speakerUrl ? (
+            <a href={speakerUrl} class={style.speakerLink} title="Voir le profil de l'intervenant">
+              {speaker.name}
+              <svg class={style.speakerLinkIcon} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </a>
+          ) : (
+            speaker.name
+          )}
+        </p>
+      )}
+      {event.shortDescription && 
+        <p class={style.shortDescription}>{event.shortDescription}</p>
+      }
+      {event.type === 'talk' && (
+        <div class={style.abstractContainer} data-talk-id={event.id}>
+          <div class={style.fullAbstract} id={abstractId}>
+            {event.abstract}
+          </div>
+          <button class={style.toggleButton} data-target={abstractId}>
+            Voir plus
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ expandedClass: style.fullAbstractExpanded, eventId: event.id }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const targetId = `abstract-${eventId}`;
+    const button = document.querySelector(`[data-target="${targetId}"]`);
+    const abstract = document.getElementById(targetId);
+    
+    if (!button || !abstract) return;
+    
+    button.addEventListener('click', () => {
+      if (abstract.classList.contains(expandedClass)) {
+        abstract.classList.remove(expandedClass);
+        button.textContent = 'Voir plus';
+      } else {
+        abstract.classList.add(expandedClass);
+        button.textContent = 'Voir moins';
+      }
+    });
+  });
+</script>

@@ -1,105 +1,267 @@
 ---
-import * as style from "./infos.css";
-
+import * as style from "./infos.css.ts";
 import Layout from "../components/Layout.astro";
 ---
 
-<Layout pageClass={style.page}>
-  <h2>Rejoindre l’I.U.T. Nancy – Charlemagne</h2>
-
-  <p>
-    l’I.U.T. Nancy – Charlemagne est situé au 2Ter Bd Charlemagne, à Nancy. Il
-    se trouve à 25 minutes à pieds de la gare SNCF de Nancy.
-  </p>
-
-  <h3>En train</h3>
-  Lille-Nancy : 14 trajets/jour, dès 6h42 <br />
-  Luxembourg-Nancy : 33 trajets/jour, dès 5h16 <br />
-  Metz-Nancy : 51 trajets/jour, dès 6h02 <br />
-  Paris-Nancy : 15 trajets/jour, dès 7h05 <br />
-  Reims-Nancy : 13 trajets/jour, dès 7h06 <br />
-  Strasbourg-Nancy : 20 trajets/jour, dès 4h44 <br />
-
-  <h3>En bus</h3>
-
-  <p>
-    Les lignes 3 (arrêt Médreville) et 16 (arrêt Charlemagne) desservent l’IUT.
-    Trajet simple : 1,70€. Pour en savoir plus sur les bus : consultez le plan
-    du réseau <a
-      href="https://www.reseau-stan.com/se-deplacer/itineraire-plans/plans-du-reseau"
-      target="_blank"
-    >
-      STAN</a
-    >.
-  </p>
-
-  <h3>En voiture</h3>
-  <p>
-    Retrouvez les <a
-                        href="https://www.reseau-stan.com/se-deplacer/itineraire-plans/plans-du-reseau"
-                        target="_blank"
-                      >
-                      parkings</a
-                                  >
-    (payants) de la ville de Nancy situés à proximité. Il
-    ne sera pas possible de se garer dans l'I.U.T.
-  </p>
-
-  <h3>En vélo</h3>
-  <p>L’IUT dispose d’un garage à vélo.</p>
-
-  <h2>Accessibilité</h2>
-  <p>
-    L’IUT est accessible aux personnes à mobilité réduite avec des aménagements
-    spécifiques : ascenseurs, amphithéâtres, toilettes, rampes d’accès.
-  </p>
-
-  <p>
-    Pour information, les sièges dans l’amphithéâtre ne présentent pas
-    d’accoudoirs. Si vous souhaitez en savoir plus ou si vous souhaitez vous
-    assurer que vous pourrez assister dans de bonnes conditions au Tech F'Est
-    2025, n’hésitez pas à <a href="mailto:contact@tech-fest.dev"
-      >contacter l’équipe d’organisation</a
-    >.
-  </p>
-
-  <h2>Infos pratiques</h2>
-  <h3>Horaires</h3>
-
-  <p>
-    Les portes ouvrent à 8h30 et la première conférence débute vers 9h. La
-    journée se termine vers 18h. Des temps de pause sont prévus dans la journée :
-    une pause café le matin, une pause déjeuner entre 12h30 et 14h, et une pause
-    dans l’après-midi. Consultez le planning détaillé publié prochainement pour
-    tout savoir de la journée.
-  </p>
-
-  <h3>Repas</h3>
-  <p>
-    Nous travaillons avec un traiteur indépendant local, qui met l’accent sur
-    les produits de saison, locaux et bio avec une politique de zéro déchet au
-    maximum. Il porte également une attention particulière aux différents
-    régimes alimentaires. N’hésitez pas à nous contacter si vous avez un régime
-    alimentaire particulier (notamment lié aux allergies).
-  </p>
-
-  <h3>Vos manteaux et bagages</h3>
-  <p>
-    Nous ne disposons pas d’espace où organiser un vestiaire au sein de l’IUT
-    Nancy – Charlemagne. Quelques portants sont mis à disposition dans la salle
-    du buffet, où vous pouvez laisser vos vestes et petits sacs. Notez cependant
-    qu’ils seront sans surveillance : gardez vos objets de valeur avec vous.
-  </p>
-
-  <h3>Respect du code de conduite</h3>
-  <p>
-    Cette conférence acceuillant du public, notre code de conduite s'applique
-    donc. Retrouvez-le en télechargement
-    <a href="/code de conduite.pdf" download>ici</a>.
-  </p>
-
-  <p>
-    Si vous rencontrez le moindre souci, n'hésitez pas à vous rapprocher d'un
-    membre de l'organisation
-  </p>
+<Layout title="Informations pratiques - Tech-f-est 2025" pageClass={style.page}>
+  <div class={style.container}>
+    <h1 class={style.pageTitle}>Informations pratiques</h1>
+    <p class={style.pageDescription}>
+      Tout ce que vous devez savoir pour profiter pleinement de votre journée au Tech-f-est 2025
+    </p>
+    
+    <!-- Annonce spéciale pour le sous-titrage en direct -->
+    <div class={style.highlightBox}>
+      <div class={style.highlightContent}>
+        <div class={style.highlightIcon}>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h20v14H2z"></path>
+            <path d="M12 17v4"></path>
+            <path d="M8 21h8"></path>
+            <path d="m9 13 2-2 2 2"></path>
+            <path d="M5 13h2"></path>
+            <path d="M13 13h6"></path>
+            <path d="m9 8 2 2 2-2"></path>
+            <path d="M5 8h2"></path>
+            <path d="M13 8h6"></path>
+          </svg>
+        </div>
+        <div class={style.highlightTextContent}>
+          <h3 class={style.highlightTitle}>Sous-titrage en direct des conférences</h3>
+          <p class={style.highlightText}>
+            Nous sommes ravis d'annoncer que Céline Ripolles, spécialiste du sous-titrage en temps réel, sera présente lors du Tech F'Est !
+            <strong>Toutes les présentations seront sous-titrées en direct</strong>, permettant ainsi aux participants malentendants de profiter pleinement du contenu de l'événement.
+          </p>
+          <p class={style.highlightText}>
+            L'inclusion et l'accessibilité sont des valeurs fondamentales pour notre communauté. Cette initiative s'inscrit dans notre engagement à créer un environnement où chacun peut participer et apprendre, quelles que soient ses spécificités.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class={style.infoSections}>
+      <!-- Section Accès -->
+      <section class={style.infoSection}>
+        <h2 class={style.sectionTitle}>Rejoindre l'I.U.T. Nancy – Charlemagne</h2>
+        <div class={style.infoContent}>
+          <p>
+            L'I.U.T. Nancy – Charlemagne est situé au 2Ter Bd Charlemagne, à Nancy. Il
+            se trouve à 25 minutes à pied de la gare SNCF de Nancy.
+          </p>
+          
+          <div class={style.subSection}>
+            <h3 class={style.subTitle}>
+              <span class={style.iconContainer}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                  <line x1="4" y1="22" x2="4" y2="15"></line>
+                </svg>
+              </span>
+              En train
+            </h3>
+            
+            <div class={style.transportList}>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Lille-Nancy</div>
+                <div class={style.transportDetail}>14 trajets/jour, dès 6h42</div>
+              </div>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Luxembourg-Nancy</div>
+                <div class={style.transportDetail}>33 trajets/jour, dès 5h16</div>
+              </div>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Metz-Nancy</div>
+                <div class={style.transportDetail}>51 trajets/jour, dès 6h02</div>
+              </div>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Paris-Nancy</div>
+                <div class={style.transportDetail}>15 trajets/jour, dès 7h05</div>
+              </div>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Reims-Nancy</div>
+                <div class={style.transportDetail}>13 trajets/jour, dès 7h06</div>
+              </div>
+              <div class={style.transportItem}>
+                <div class={style.transportName}>Strasbourg-Nancy</div>
+                <div class={style.transportDetail}>20 trajets/jour, dès 4h44</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class={style.subSection}>
+            <h3 class={style.subTitle}>
+              <span class={style.iconContainer}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="5" width="16" height="16" rx="2"></rect>
+                  <path d="M16 16h.01"></path>
+                  <path d="M8 16h.01"></path>
+                  <path d="M4 11h16"></path>
+                </svg>
+              </span>
+              En bus
+            </h3>
+            <p>
+              Les lignes 3 (arrêt Médreville) et 16 (arrêt Charlemagne) desservent l'IUT.
+              Trajet simple : 1,70€. Pour en savoir plus sur les bus : consultez le plan
+              du réseau <a href="https://www.reseau-stan.com/se-deplacer/itineraire-plans/plans-du-reseau" target="_blank" class={style.link}>STAN</a>.
+            </p>
+          </div>
+          
+          <div class={style.subSection}>
+            <h3 class={style.subTitle}>
+              <span class={style.iconContainer}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 17h14v-6.9a1.1 1.1 0 0 0-1.1-1.1H6.1a1.1 1.1 0 0 0-1.1 1.1V17Z"></path>
+                  <path d="M8 17v1a2 2 0 0 1-2 2H5"></path>
+                  <path d="M16 17v1a2 2 0 0 0 2 2h1"></path>
+                  <circle cx="7.5" cy="14.5" r="1.5"></circle>
+                  <circle cx="16.5" cy="14.5" r="1.5"></circle>
+                </svg>
+              </span>
+              En voiture
+            </h3>
+            <p>
+              Retrouvez les <a href="https://www.nancy.fr/pratique/stationnement/parking-a-nancy-159.html" target="_blank" class={style.link}>parkings</a> (payants) de la ville de Nancy situés à proximité. Il ne sera pas possible de se garer dans l'I.U.T.
+            </p>
+          </div>
+          
+          <div class={style.subSection}>
+            <h3 class={style.subTitle}>
+              <span class={style.iconContainer}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="5" cy="19" r="3"></circle>
+                  <circle cx="19" cy="19" r="3"></circle>
+                  <circle cx="12" cy="7" r="3"></circle>
+                  <line x1="12" y1="4" x2="12" y2="1"></line>
+                  <line x1="19" y1="16" x2="19" y2="9"></line>
+                  <line x1="12" y1="10" x2="19" y2="9"></line>
+                  <line x1="12" y1="10" x2="5" y2="16"></line>
+                </svg>
+              </span>
+              En vélo
+            </h3>
+            <p>L'IUT dispose d'un garage à vélo.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section Accessibilité -->
+      <section class={style.infoSection}>
+        <h2 class={style.sectionTitle}>Accessibilité</h2>
+        <div class={style.infoContent}>
+          <p>
+            L'IUT est accessible aux personnes à mobilité réduite avec des aménagements
+            spécifiques : ascenseurs, amphithéâtres, toilettes, rampes d'accès.
+          </p>
+          
+          <div class={style.accessibilityFeature}>
+            <div class={style.accessibilityIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path>
+                <path d="M11 3h2v8h-2z"></path>
+                <path d="M15 7a2 2 0 0 0-3 0"></path>
+                <path d="M19 9a7 7 0 0 0-13 0"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class={style.featureTitle}>Sous-titrage en direct</h4>
+              <p>Toutes les présentations seront sous-titrées en temps réel par une professionnelle, Céline Ripolles, pour permettre aux participants malentendants de suivre les conférences.</p>
+            </div>
+          </div>
+          
+          <p>
+            Pour information, les sièges dans l'amphithéâtre ne présentent pas
+            d'accoudoirs. Si vous souhaitez en savoir plus ou si vous souhaitez vous
+            assurer que vous pourrez assister dans de bonnes conditions au Tech F'Est
+            2025, n'hésitez pas à <a href="mailto:contact@tech-fest.dev" class={style.link}>contacter l'équipe d'organisation</a>.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Section Infos pratiques -->
+      <section class={style.infoSection}>
+        <h2 class={style.sectionTitle}>Infos pratiques</h2>
+        <div class={style.infoContent}>
+          <div class={style.practicalInfo}>
+            <div class={style.infoCard}>
+              <h3 class={style.infoCardTitle}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Horaires
+              </h3>
+              <div class={style.infoCardContent}>
+                <p>
+                  Les portes ouvrent à 8h30 et la première conférence débute vers 9h. La
+                  journée se termine vers 18h. Des temps de pause sont prévus dans la journée :
+                  une pause café le matin, une pause déjeuner entre 12h30 et 14h, et une pause
+                  dans l'après-midi.
+                </p>
+                <p class="mt-2">
+                  Consultez le <a href="/planning" class={style.link}>planning détaillé</a> pour tout savoir de la journée.
+                </p>
+              </div>
+            </div>
+            
+            <div class={style.infoCard}>
+              <h3 class={style.infoCardTitle}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3C8.8 3 6 5.2 6 8c0 3.2 4 10 6 10s6-6.8 6-10c0-2.8-2.8-5-6-5z"></path>
+                  <path d="M15 11a3 3 0 1 0-6 0"></path>
+                </svg>
+                Repas
+              </h3>
+              <div class={style.infoCardContent}>
+                <p>
+                  Nous travaillons avec un traiteur indépendant local, qui met l'accent sur
+                  les produits de saison, locaux et bio avec une politique de zéro déchet au
+                  maximum. Il porte également une attention particulière aux différents
+                  régimes alimentaires.
+                </p>
+                <p class="mt-2">
+                  N'hésitez pas à nous contacter si vous avez un régime
+                  alimentaire particulier (notamment lié aux allergies).
+                </p>
+              </div>
+            </div>
+            
+            <div class={style.infoCard}>
+              <h3 class={style.infoCardTitle}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a1.94 1.94 0 0 0-.09 3.35l12.35 6.62a1.93 1.93 0 0 0 1.81 0l3.65-1.9a1.93 1.93 0 0 0 .09-3.36z"></path>
+                  <path d="M3.09 8.84v12.58a1.93 1.93 0 0 0 1.74 1.92l3.36.58a1.93 1.93 0 0 0 2.12-1.92V16"></path>
+                  <path d="M20.91 8.84v12.58a1.93 1.93 0 0 1-1.74 1.92l-3.36.58a1.93 1.93 0 0 1-2.12-1.92"></path>
+                </svg>
+                Vos manteaux et bagages
+              </h3>
+              <div class={style.infoCardContent}>
+                <p>
+                  Nous ne disposons pas d'espace où organiser un vestiaire au sein de l'IUT
+                  Nancy – Charlemagne. Quelques portants sont mis à disposition dans la salle
+                  du buffet, où vous pouvez laisser vos vestes et petits sacs. Notez cependant
+                  qu'ils seront sans surveillance : gardez vos objets de valeur avec vous.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class={style.alertBox}>
+            <h4 class={style.alertTitle}>Respect du code de conduite</h4>
+            <div class={style.alertContent}>
+              <p>
+                Cette conférence acceuillant du public, notre code de conduite s'applique
+                donc. Retrouvez-le en télechargement
+                <a href="/code de conduite.pdf" download class={style.link}>ici</a>.
+              </p>
+              <p class="mt-2">
+                Si vous rencontrez le moindre souci, n'hésitez pas à vous rapprocher d'un
+                membre de l'organisation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </Layout>

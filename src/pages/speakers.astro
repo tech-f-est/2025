@@ -1,51 +1,39 @@
 ---
 import * as style from "./speakers.css";
-
 import Layout from "../components/Layout.astro";
 import Speaker from "../components/Speaker.astro";
+import { speakers, getAllTalks } from "../data/conference-data";
+
+// On récupère uniquement les talks (pas les pauses, keynotes, etc.)
+const talks = getAllTalks();
+
+// On crée un objet qui associe chaque speaker à son talk
+const speakersWithTalks = speakers.map(speaker => {
+  const speakerTalk = talks.find(talk => talk.speakerId === speaker.id);
+  return {
+    ...speaker,
+    talk: speakerTalk || null
+  };
+});
+
+// On filtre pour n'avoir que les speakers qui ont un talk
+const speakersToDisplay = speakersWithTalks
+  .filter(speaker => speaker.talk)
+  // Ajout du tri par ordre alphabétique sur le nom
+  .sort((a, b) => a.name.localeCompare(b.name, 'fr-FR'));
 ---
 
-<Layout pageClass={style.page}>
-  <section class={style.speakers}>
-    <Speaker
-      title="Migration Technique: un parcours du combattant"
-      name="Arnaud Lahaxe"
-      abstract="Migrer un code legacy vieux de plus de 20 ans, encore massivement utilisé pour des fonctionnalités critiques au cœur du business, est un défi de taille. Entre dette technique, complexité accumulée et exigences métier incontournables, comment mener à bien une telle transformation sans mettre en péril l'activité de l'entreprise ?    Dans cette conférence, je partagerai mon retour d'expérience sur la migration d'un système legacy central, en abordant les méthodologies, outils et bonnes pratiques qui ont permis de minimiser les risques et d'assurer une transition en douceur. Vous découvrirez comment nous avons identifié les zones à risque, mis en place une approche progressive et embarqué progressivement les développeurs dans la migration.    Que vous soyez en pleine réflexion sur la modernisation de votre stack ou confronté à un projet de migration d’envergure, cette session vous donnera des clés concrètes pour anticiper les obstacles et maximiser vos chances de succès."
-    />
-    <Speaker
-      title="Comment scaler une integration Stripe à large échelle : une histoire de fiabilité"
-      name="Kevin Maschtaler"
-      abstract="Kévin, Staff Software Engineer à Shotgun, vous parlera des challenges et apprentissages de la mise à grande échelle d’une intégration Stripe dans un produit complexe et international. Un prétexte parfait pour s’initier au Reliability Engineering. Au menu : qualité de service, idempotence, atomicité, consistence de données, workers/retries, et bien d’autres."
-    />
-    <Speaker
-      title="Façonner les architectures du futur avec Dapr"
-      name="Christophe Gigax"
-      abstract="Construire son architecture distribuée en micro-service n'est jamais chose facile, et nombreuses sont les équipes faisant face aux difficultés de ce type d'architecture complexe pourtant très prometteuse. Dapr est un projet Open Source - incubé par la fondation CNCF - permettant de faciliter l'élaboration d'une architecture micro-service. Agissant comme une couche d'abstraction applicatives, Dapr expose des mécanismes généraux tels que la gestion d'état ou les pub/sub via des canaux de communication standard. L'objectif est de simplifier la conception d'application en micro-service, peu importe la technologie utilisée (Node, Go, .NET, React ...) Nous verrons dans cette session différentes architectures possibles avec Dapr, et quelques démo notamment avec Kubernetes permettant de faciliter l'orchestration des microservices."
-    />
-    <Speaker
-      title="Nomad & Co : Une alternative crédible à Kubernetes pour la transition vers le cloud ?"
-      name="Steven Martins"
-      abstract="Face à la modernisation des infrastructures, la transition d’une architecture N-tiers historique vers une approche cloud-native et containerisée est un défi de taille. Kubernetes s’impose souvent comme le choix par défaut, mais est-ce la seule option viable ? Dans cette session, nous explorerons Nomad, la solution d’orchestration d’HashiCorp, et son écosystème : Vault pour la gestion des secrets, Consul pour la découverte automatique des services, GitLab CI/CD pour l’automatisation des déploiements, Docker et notre factory d’images pour la gestion des conteneurs, ainsi que HAProxy pour la résilience. Nous verrons comment cette stack permet de répondre aux enjeux de scalabilité, de simplification opérationnelle et de migration progressive vers le cloud public. Nomad est-il une alternative sérieuse à Kubernetes, ou une étape intermédiaire dans la transition ? Peut-être, peut-être pas… Mais c’est un choix pragmatique que nous détaillerons ensemble !"
-    />
-    <Speaker
-      title="CI / CD: Correct Implementation or Continuous Deception"
-      name="Anne-Flore François"
-      abstract="Des secrets volés, une récupération de votre code, une RCE (Remote Code Execution)… Voici quelques exemples de ce qui peut arriver si votre CI n’est pas correctement configurée et sécurisée. Et pourtant, la CI / CD est souvent hors scope des tests d’intrusion et personne ne prend la responsabilité de la sécuriser. Les CI / CD nous ont apporté beaucoup de sécurité et d’améliorations de qualité dans nos pratiques de code au quotidien, en apportant des standards de code et en faisant tourner des outils pour automatiser nos pratiques de sécurité. Elles font cependant partie de la surface d’attaque de nos applications et doivent être analysée, mises à jour et sécurisées au même titre que le code. Certaines configurations par défaut sont même dangereuses ! Dans ce talk, vous verrez comment faire des injections dans les CI / CD, récupérer des secrets ou exécuter des scripts et quels sont les bons moyens pour les sécuriser."
-    />
-    <Speaker
-      title="Techno-Autoritarisme et design persuasif : quels risques pour nos libertés ?"
-      name="Marcy Ericka Charollois"
-      abstract="Comment le design persuasif, utilisé par les géants de la tech, contribue à l'émergence du techno-autoritarisme ? En manipulant subtilement les comportements et les pensées des utilisateurs, ces stratégies de design exploitent la psychologique pour accroître l'engagement et la dépendance aux plateformes numériques. Nous examinerons les implications de ces pratiques sur la santé mentale, l'humanité et les libertés individuelles. En s'appuyant sur des perspectives interdisciplinaires, cette présentation mettra en lumière les mécanismes par lesquels le design persuasif renforce le contrôle des pensées et actions des individus, menaçant ainsi les fondements mêmes de nos sociétés démocratiques. Que faire pour entraver ces dynamiques ?"
-    />
-    <Speaker
-      title="Embeddings : transformation de la recherche d'information"
-      name="Iana Iatsun"
-      abstract="Les moteurs de recherche, basés sur des index, ont longtemps été des outils essentiels pour trouver de l'information en ligne. Cependant, l'évolution rapide des grands modèles de langage a ouvert la voie à une nouvelle génération de systèmes de recherche : les moteurs de réponse, offrant une compréhension sémantique plus approfondie des requêtes.\nCette conférence explorera les différences fondamentales entre ces deux types de moteurs. Nous discuterons de leur fonctionnement respectif et des avantages qu'offrent les moteurs de réponse par rapport aux moteurs de recherche traditionnels. Nous nous pencherons également sur les architectures à mettre en place pour combiner le meilleur des deux mondes : la rapidité des index et la compréhension sémantique des grands modèles de langage"
-    />
-    <Speaker
-      title="Comment débuter dans l'accessibilité numérique ?"
-      name="Emmanuelle Aboaf"
-      abstract="Vous êtes développeuse ou développeur et vous êtes intéressés par l'accessibilité numérique mais vous ne savez pas par où commencer ? Venez découvrir les bases du développement de l'accessibilité numérique en HTML. Vous verrez que respecter la sémantique HTML permet de faciliter l'accessibilité.\nÀ travers mes exemples, vous pourrez sans peine appliquer les conseils que je vous donnerai dans vos développements y compris dans les frameworks JS (Angular, React et Vue)."
-    />
-  </section>
+<Layout title="Nos intervenants - Tech-f-est 2025" pageClass={style.page}>
+  <div class={style.container}>
+    <h1 class={style.pageTitle}>Nos intervenants</h1>
+    <p class={style.pageDescription}>
+      Découvrez les experts qui partageront leurs connaissances et expériences lors du Tech-f-est 2025
+    </p>
+    
+    <section class={style.speakers}>
+      {speakersToDisplay.map(speaker => (
+        <Speaker speaker={speaker} talk={speaker.talk} />
+      ))}
+    </section>
+  </div>
 </Layout>

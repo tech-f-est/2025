@@ -1,0 +1,61 @@
+---
+import * as style from "./SponsorCard.css.ts";
+import type { Sponsor } from "../data/sponsoring-data";
+import { getPackById, getSponsorLogoPath } from "../data/sponsoring-data";
+
+interface Props {
+  sponsor: Sponsor;
+  showPackBadge?: boolean;
+}
+
+const { sponsor, showPackBadge = false } = Astro.props;
+const pack = getPackById(sponsor.packId);
+
+// Utiliser la nouvelle fonction utilitaire pour obtenir le chemin du logo
+const logoSrc = getSponsorLogoPath(sponsor);
+---
+
+<div class={style.sponsorCard}>
+  {showPackBadge && pack && (
+    <div class={style.packBadge}>Pack {pack.name}</div>
+  )}
+  
+  <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class={style.sponsorLink}>
+    <div class={style.logoContainer}>
+      <!-- Affichage conditionnel pour le logo ou le fallback -->
+      {sponsor.logoPath ? (
+        <img 
+          src={logoSrc}
+          alt={`Logo de ${sponsor.name}`} 
+          class={style.sponsorLogo}
+          width="180" 
+          height="80"
+          loading="lazy"
+          onload="this.style.display = 'block';"
+          onerror="this.style.display = 'none'; this.nextElementSibling.style.display = 'flex';"
+        />
+      ) : (
+        <div class={style.logoPlaceholder}>
+          {sponsor.name.substring(0, 2).toUpperCase()}
+        </div>
+      )}
+      <div class={style.logoFallback} style="display: none;">
+        {sponsor.name.substring(0, 2).toUpperCase()}
+      </div>
+    </div>
+    
+    <div class={style.contentContainer}>
+      <h3 class={style.sponsorName}>{sponsor.name}</h3>
+      {sponsor.description && 
+        <p class={style.sponsorDescription}>{sponsor.description}</p>
+      }
+      <div class={style.visitSite}>
+        Visiter le site
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>

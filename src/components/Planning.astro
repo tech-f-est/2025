@@ -1,0 +1,39 @@
+---
+import * as style from "./Planning.css.ts"; 
+import Event from "./Event.astro";
+import type { Talk } from "../data/conference-data";
+
+interface Props {
+  events: Talk[];
+}
+
+const { events = [] } = Astro.props;
+---
+
+<!-- Injecter les variables CSS pour le mode sombre -->
+<style>
+  :root {
+    --primaryLight: light-dark(#f8e8e0, #3d2a1e);
+    --secondaryLight: light-dark(#e1f0fa, #1a3c54);
+    --coffeeBreakBg: light-dark(#fff8e6, #332b1a);
+    --keynoteBg: light-dark(#fff0e8, #3d2a1e);
+    --color-accent-rgb: 231, 104, 12;
+  }
+</style>
+
+<div class={style.timelineContainer}>
+  <!-- En-tête du timeline -->
+  <div class={style.timelineHeader}>
+    <div class={`${style.headerColumn} ${style.timeColumnHeader}`}>
+      <span class={style.headerLabel}>Horaire</span>
+    </div>
+    <div class={`${style.headerColumn} ${style.contentColumnHeader}`}>
+      <span class={style.headerLabel}>Session</span>
+    </div>
+  </div>
+  
+  <!-- Tous les événements en ordre chronologique -->
+  {events.map((event, index) => (
+    <Event event={event} index={index} />
+  ))}
+</div>

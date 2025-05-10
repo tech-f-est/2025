@@ -1,27 +1,44 @@
-import { style } from "@vanilla-extract/css";
-import { theme } from "../theme.css";
+import { style } from '@vanilla-extract/css';
+import { theme } from '../theme.css';
 
 export const page = style({
-  maxWidth: `min(1280px, 100vw - calc(2 * ${theme.spacing.large}))`,
-  alignSelf: "center",
+  backgroundColor: theme.background.default,
+  color: theme.foreground.default,
+  minHeight: '100vh',
+  paddingBottom: '4rem',
+});
 
-  marginTop: 200,
+export const container = style({
+  maxWidth: '1000px', // Confirmer que c'est bien 1000px
+  margin: '0 auto',
+  padding: '3rem 1.5rem', // Standardiser le padding vertical
+  '@media': {
+    '(max-width: 768px)': {
+      padding: '2rem 1rem',
+    }
+  }
+});
 
-  display: "flex",
-  flexDirection: "row",
-  gap: theme.spacing.large,
+export const pageTitle = style({
+  fontSize: '3rem',
+  fontWeight: '800',
+  textAlign: 'center',
+  color: theme.foreground.default,
+  marginBottom: '1rem',
+  letterSpacing: '-0.03em',
+});
 
-  "@media": {
-    "(max-width: 768px)": { marginTop: 0 },
-  },
+export const pageDescription = style({
+  fontSize: '1.25rem',
+  color: theme.foreground.dimmed,
+  textAlign: 'center',
+  maxWidth: '700px',
+  margin: '0 auto 4rem',
+  lineHeight: 1.6,
 });
 
 export const speakers = style({
-  display: "grid",
-  gap: theme.spacing.large,
-  gridTemplateColumns: "repeat(2, 1fr)",
-
-  "@media": {
-    "(max-width: 768px)": { gridTemplateColumns: "1fr" },
-  },
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gap: '3rem',
 });

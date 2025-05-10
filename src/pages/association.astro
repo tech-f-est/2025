@@ -1,34 +1,126 @@
 ---
-import * as style from "./association.css";
-
+import * as style from "./association.css.ts";
 import Layout from "../components/Layout.astro";
+import Logo from "../components/Logo.astro";
 ---
 
-<Layout pageClass={style.page}>
-  <h1>Présentation de l'Association Tech F'Est</h1>
-  <p>
-    Tech F'Est est une association dynamique dédiée à la promotion et à
-    l'organisation de conférences technologiques dans la région du Grand Est,
-    avec un ancrage particulier à Nancy. Notre mission est de rassembler les
-    passionné·e·s de technologie, de développement et d'innovation pour
-    favoriser les échanges, le partage de connaissances et la création de liens
-    au sein de la communauté tech locale.
-  </p>
-  <p>
-    Née de la collaboration entre les membres actifs de l'AFUP Lorraine et des
-    Apéro Web, Tech F'Est se positionne comme un acteur clé dans l'écosystème
-    numérique régional. Nous organisons des événements qui mettent en lumière
-    les talents locaux et attirent des experts renommés, offrant ainsi une
-    plateforme d'apprentissage et de réseautage unique.
-  </p>
-  <p>
-    Rejoignez-nous pour nos conférences annuelles et autres événements tout au
-    long de l'année, où vous pourrez découvrir des interventions inspirantes,
-    participer à des ateliers pratiques et échanger avec des professionnels
-    partageant vos intérêts. Que vous soyez développeur ou développeuse,
-    ingénieur·e, étudiant·e ou simplement passionné·e par les technologies, Tech
-    F'Est vous ouvre ses portes pour enrichir vos connaissances et élargir votre
-    réseau.
-  </p>
-  <p>Ensemble, faisons du Grand Est un pôle d'excellence technologique !</p>
+<Layout title="Notre Association - Tech-f-est 2025" pageClass={style.page}>
+  <div class={style.container}>
+    <h1 class={style.pageTitle}>L'Association Tech F'Est</h1>
+    <p class={style.pageSubtitle}>
+      Promouvoir l'écosystème tech dans le Grand Est à travers des événements de qualité
+    </p>
+    
+    <div class={style.sectionContainer}>
+      <section class={style.aboutSection}>
+        <div class={style.sectionContent}>
+          <div class={style.textContent}>
+            <p class={style.highlightedParagraph}>
+              Tech F'Est est une association dynamique dédiée à la promotion et à
+              l'organisation de conférences technologiques dans la région du Grand Est,
+              avec un ancrage particulier à Nancy.
+            </p>
+            
+            <p class={style.paragraph}>
+              Notre mission est de rassembler les passionné·e·s de technologie, 
+              de développement et d'innovation pour favoriser les échanges, le partage 
+              de connaissances et la création de liens au sein de la communauté tech locale.
+            </p>
+            
+            <p class={style.paragraph}>
+              Née de la collaboration entre les membres actifs de l'AFUP Lorraine et des
+              Apéro Web, Tech F'Est se positionne comme un acteur clé dans l'écosystème
+              numérique régional. Nous organisons des événements qui mettent en lumière
+              les talents locaux et attirent des experts renommés, offrant ainsi une
+              plateforme d'apprentissage et de réseautage unique.
+            </p>
+          </div>
+          
+          <div class={style.imageContainer}>
+            <div class={style.visualContainer}>
+              <div class={style.logoVisual}>
+                <div class={style.logoWrapper}>
+                  <Logo viewBox="0 0 255 200" />
+                </div>
+                <span class={style.regionText}>Tech F'Est</span>
+              </div>
+              <div class={style.valuesContainer}>
+                <span class={style.valueTag}>Partage</span>
+                <span class={style.valueTag}>Innovation</span>
+                <span class={style.valueTag}>Communauté</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class={style.objectivesGrid}>
+          <div class={style.objectiveCard}>
+            <h3 class={style.objectiveTitle}>
+              <span class={style.objectiveIcon}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+              </span>
+              Innover
+            </h3>
+            <p class={style.objectiveContent}>
+              Promouvoir les nouvelles technologies et méthodologies dans le secteur numérique.
+            </p>
+          </div>
+          
+          <div class={style.objectiveCard}>
+            <h3 class={style.objectiveTitle}>
+              <span class={style.objectiveIcon}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </span>
+              Connecter
+            </h3>
+            <p class={style.objectiveContent}>
+              Créer des liens entre professionnels, étudiants et entreprises de la région.
+            </p>
+          </div>
+          
+          <div class={style.objectiveCard}>
+            <h3 class={style.objectiveTitle}>
+              <span class={style.objectiveIcon}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 9a3 3 0 1 0 0 6 3 3 0 1 0 0-6z"></path>
+                  <path d="M19 9a7 7 0 1 0-14 0"></path>
+                  <path d="M12 12v9"></path>
+                </svg>
+              </span>
+              Partager
+            </h3>
+            <p class={style.objectiveContent}>
+              Faciliter le partage de connaissances et d'expériences au sein de la communauté.
+            </p>
+          </div>
+        </div>
+        
+        <p class={style.paragraph}>
+          Rejoignez-nous pour nos conférences annuelles et autres événements tout au
+          long de l'année, où vous pourrez découvrir des interventions inspirantes,
+          participer à des ateliers pratiques et échanger avec des professionnels
+          partageant vos intérêts. Que vous soyez développeur ou développeuse,
+          ingénieur·e, étudiant·e ou simplement passionné·e par les technologies, Tech
+          F'Est vous ouvre ses portes pour enrichir vos connaissances et élargir votre
+          réseau.
+        </p>
+        
+        <p class={style.paragraph}>
+          Ensemble, faisons du Grand Est un pôle d'excellence technologique !
+        </p>
+        
+        <div class={style.ctaSection}>
+          <h3 class={style.ctaTitle}>Vous souhaitez soutenir notre association ?</h3>
+          <a href="/sponsoring" class={style.ctaButton}>Découvrir nos offres de sponsoring</a>
+        </div>
+      </section>
+    </div>
+  </div>
 </Layout>

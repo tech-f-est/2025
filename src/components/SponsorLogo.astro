@@ -1,0 +1,25 @@
+---
+interface Props {
+  sponsorId: string;
+  name: string;
+  fallbackUrl?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+}
+
+const { sponsorId, name, fallbackUrl, className, width = 180, height = 80 } = Astro.props;
+
+// Construire le chemin vers le logo dans le dossier public
+const logoPath = `/sponsors/${sponsorId}.svg`;
+---
+
+<img 
+  src={logoPath}
+  alt={`Logo de ${name}`} 
+  class={className}
+  width={width} 
+  height={height}
+  loading="lazy"
+  onerror={`this.onerror=null; this.src='${fallbackUrl || '/sponsors/placeholder.svg'}'`}
+/>
