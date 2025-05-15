@@ -120,6 +120,5 @@ export const packBadge = style({
   color: "white",
   backgroundColor: theme.foreground.accent,
   borderRadius: "20px",
-  zIndex: 2,
   letterSpacing: "0.02em",
 });

@@ -57,9 +57,7 @@ export const emptyState = style({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    zIndex: 0,
   },
-  zIndex: 1,
 });
 
 export const speakerCard = style({

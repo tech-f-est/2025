@@ -14,6 +14,7 @@ export const nav = style({
   "@media": {
     "(max-width: 768px)": {
       alignItems: "flex-start",
+      zIndex: 1,
     },
   },
 });
