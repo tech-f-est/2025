@@ -124,8 +124,8 @@ export const talks: Talk[] = [
   {
     id: "opening",
     title: "Accueil des participants",
-    shortDescription: "Récupération des badges et café d'accueil",
-    abstract: "Prenez le temps de récupérer votre badge, de profiter d'un café ou thé d'accueil et de faire connaissance avec les autres participants avant le début des conférences.",
+    shortDescription: "Récupération des badges",
+    abstract: "Prenez le temps de récupérer votre badge et de faire connaissance avec les autres participants avant le début des conférences.",
     startTime: "8:30",
     endTime: "9:00",
     day: "morning",
