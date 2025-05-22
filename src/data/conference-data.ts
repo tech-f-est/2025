@@ -99,8 +99,8 @@ export const speakers: Speaker[] = [
   {
     id: "iana-iatsun",
     name: "Iana Iatsun",
-    bio: "Docteure en traitement d'images et signal et pionnière des réseaux de neurones. Après une carrière en biométrie, elle dirige depuis 5 ans les activités MLOps de la Banque de France tout en promouvant une IA éthique et responsable. Sa double expertise technique et éthique en fait une voix incontournable dans le domaine de l'intelligence artificielle.",
-    company: "Banque de France",
+    bio: "Docteure en traitement d'images et signal et pionnière des réseaux de neurones. Après une carrière en biométrie, elle dirige depuis 5 ans une équipe MLOps dans une institution financière, tout en promouvant une IA éthique et responsable. Sa double expertise technique et éthique en fait une voix incontournable dans le domaine de l'intelligence artificielle.",
+    company: "IA parle",
     title: " Artificial Intelligence Specialist",
     socialLinks: {
       linkedin: "iaiatsun",
