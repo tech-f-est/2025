@@ -100,6 +100,14 @@ export const sponsors: Sponsor[] = [
     packId: "bergamote"
   },
   {
+    id: "boursobank",
+    name: "Boursobank",
+    description: "Leader de la banque en ligne pour les particuliers et les professionnels",
+    website: "https://www.boursobank.fr",
+    logoPath: "/img/sponsors/boursobank.png",
+    packId: "bergamote"
+  },
+  {
     id: "iut-charlemagne",
     name: "IUT Nancy-Charlemagne",
     description: "L'IUT Nancy-Charlemagne nous accueille dans ses locaux pour cet événement. Un grand merci à eux pour leur soutien essentiel à la réussite de Tech F'Est 2025.",
