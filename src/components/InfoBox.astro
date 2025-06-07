@@ -1,0 +1,10 @@
+---
+import * as style from "./InfoBox.css.ts";
+interface Props {
+  className?: string;
+}
+const { className = "" } = Astro.props;
+---
+<div class={`${style.infoBox} ${className}`}>
+  <slot />
+</div>

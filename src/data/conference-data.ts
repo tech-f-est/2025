@@ -87,13 +87,13 @@ export const speakers: Speaker[] = [
     }
   },
   {
-    id: "marcy-ericka-charollois",
-    name: "Marcy Ericka Charollois",
-    bio: "Auteure en social tech, content strategist. Ancienne rédactrice en cheffe de WeLoveDevs. Elle y était la première femme embauchée. Elle était la première femme racisée et LGBTQIA+.  Elle choisi de prendre une plume plus engagée pour valoriser la diversité dans notre industrie.",
-    company: "",
-    title: "Inclusive UX Consultant",
+    id: "danielle-kayumbi",
+    name: "Danielle Kayumbi",
+    bio: "Ingénieure logicielle depuis plus de 15 ans, elle est actuellement Managing Solution Architect chez Capgemini Group. Elle est également fondatrice de la société DK Wave Technology, éditrice de la solution innovante de paie « Smart Attendance » dédiée aux universités et centres de formation.\n\nLe partage de connaissances est sa principale motivation. Depuis 2017, elle contribue au développement de solutions open source en présentant des conférences sur des sujets techniques qui la passionnent, partout dans le monde.",
+    company: "Capgemini",
+    title: "Architecte solution",
     socialLinks: {
-      linkedin: "/marcy-ericka-charollois-1604",
+      linkedin: "danielle-kayumbi-hodieb-5450b448",
     }
   },
   {
@@ -272,11 +272,11 @@ export const talks: Talk[] = [
     type: "talk"
   },
   {
-    id: "techno-autoritarisme",
-    title: "Techno-Autoritarisme et design persuasif : quels risques pour nos libertés ?",
-    shortDescription: "Une réflexion essentielle sur les implications sociétales des technologies persuasives.",
-    abstract: "Comment le design persuasif, utilisé par les géants de la tech, contribue à l'émergence du techno-autoritarisme ? En manipulant subtilement les comportements et les pensées des utilisateurs, ces stratégies de design exploitent la psychologique pour accroître l'engagement et la dépendance aux plateformes numériques. Nous examinerons les implications de ces pratiques sur la santé mentale, l'humanité et les libertés individuelles. En s'appuyant sur des perspectives interdisciplinaires, cette présentation mettra en lumière les mécanismes par lesquels le design persuasif renforce le contrôle des pensées et actions des individus, menaçant ainsi les fondements mêmes de nos sociétés démocratiques. Que faire pour entraver ces dynamiques ?",
-    speakerId: "marcy-ericka-charollois",
+    id: "opentelemetry",
+    title: "Tracez votre code applicatif avec OpenTelemetry",
+    shortDescription: "Comprendre et implémenter l'observabilité distribuée avec OpenTelemetry dans vos microservices.",
+    abstract: "Dans une architecture distribuée, étant donné que les microservices évoluent indépendamment, il est nécessaire de pouvoir suivre le parcours d'une requête entièrement. Cependant, en cas d'erreur dans les communications, le suivi de la requête devient fastidieux voire impossible en utilisant les techniques traditionnelles.\n\nNous devons être en mesure d'observer le système afin d'anticiper les problèmes qui pourraient engendrer des pannes du système. La collecte, le traitement et la transmission des données télémétriques deviennent donc primordiales pour répondre à ce besoin, en s'appuyant sur le framework OpenTelemetry.\n\nAu cours de cette conférence, nous verrons les principes fondamentaux de OpenTelemetry, ainsi qu'un exemple d'implémentation dans un projet en PHP.",
+    speakerId: "danielle-kayumbi",
     startTime: "16:40",
     endTime: "17:20",
     day: "afternoon",
