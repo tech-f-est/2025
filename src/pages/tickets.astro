@@ -1,0 +1,32 @@
+---
+import * as style from "./tickets.css";
+
+import Layout from "../components/Layout.astro";
+import TicketsPack from "../components/TicketsPack.astro";
+---
+
+
+<Layout pageClass={style.page}>
+
+<p>
+Les billets donnent accès à toutes les conférences, petit-déjeuner, pauses cafés et déjeuner.
+</p>
+
+  <section class={style.packs}>
+    <TicketsPack
+      name="Early Bird"
+      price={60}
+      places={14}
+    />
+    <TicketsPack
+      name="Standard"
+      price={80}
+      places={90}
+    />
+    <TicketsPack
+      name="Late Bird"
+      price={110}
+      places={90}
+    />
+  </section>
+</Layout>
