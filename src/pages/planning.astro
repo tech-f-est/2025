@@ -1,6 +1,7 @@
 ---
 import Layout from "../components/Layout.astro";
 import PlanningComponent from "../components/Planning.astro";
+import InfoBox from "../components/InfoBox.astro";
 import * as style from "./planning.css.ts";
 import { getAllEvents } from "../data/conference-data";
 
@@ -13,6 +14,13 @@ const allEvents = getAllEvents();
       <h1 class={style.pageTitle}>Programme</h1>
       <p class={style.pageSubtitle}>13 Juin 2025 • IUT Charlemagne - Nancy</p>
     </header>
+
+    <InfoBox>
+      <strong>Changement de dernière minute :</strong>
+      La conférence de Marcy Ericka Charollois est remplacée par une intervention de <strong>Danielle Kayumbi (Capgemini)</strong> :
+      <em>« Tracez votre code applicatif avec OpenTelemetry »</em>.
+      Merci de votre compréhension !
+    </InfoBox>
     
     <PlanningComponent events={allEvents} />
     
