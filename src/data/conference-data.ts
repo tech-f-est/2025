@@ -89,7 +89,7 @@ export const speakers: Speaker[] = [
   {
     id: "danielle-kayumbi",
     name: "Danielle Kayumbi",
-    bio: "Ingénieure logicielle depuis plus de 15 ans, elle est actuellement Managing Solution Architect chez Capgemini Group. Elle est également fondatrice de la société DK Wave Technology, éditrice de la solution innovante de paie « Smart Attendance » dédiée aux universités et centres de formation.\n\nLe partage de connaissances est sa principale motivation. Depuis 2017, elle contribue au développement de solutions open source en présentant des conférences sur des sujets techniques qui la passionnent, partout dans le monde.",
+    bio: "Ingénieure logicielle depuis plus de 15 ans, elle est actuellement Managing Solution Architect chez Capgemini Group.\n\nLe partage de connaissances est sa principale motivation. Depuis 2017, elle contribue au développement de solutions open source en présentant des conférences sur des sujets techniques qui la passionnent, partout dans le monde.",
     company: "Capgemini",
     title: "Architecte solution",
     socialLinks: {
